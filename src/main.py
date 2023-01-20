@@ -124,21 +124,22 @@ def pep(session):
             td = description.find(string='Status')
             status = td.find_parent().find_next_sibling().text
             if status not in expected_status:
-                logging.append(
+                logs.append(
                     UNEXPECTED_PEP_STATUS.format(
                         pep_link=pep_link,
                         status_pep=status_pep,
                         expected_status=expected_status,
                     )
                 )
+            results_count[status] += 1
         except ConnectionError:
             logs.append(CONNECTION_ERROR_MESSAGE.format(link=pep_link))
     for log in logs:
         logging.info(log)
     return [
-        ('Status', 'Count'),
+        ('Статус', 'Количество'),
         *results_count.items(),
-        ('Total', sum(results_count.values()))
+        ('Всего', sum(results_count.values()))
     ]
 
 

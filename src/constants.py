@@ -16,7 +16,7 @@ CONNECTION_ERROR_MESSAGE = 'Ошибка соединения с {link}'
 DOWNLOAD_COMPLITE = 'Архив был загружен и сохранён: {archive_path}'
 VERSION_ERROR_MESSAGE = 'Данная версия Python не найдена'
 UNEXPECTED_PEP_STATUS = (
-    'Ошибка в совпадении статусов по адресу: {pep_link} \n'
+    '\nОшибка в совпадении статусов по адресу: {pep_link} \n'
     'Статус: {status_pep} не найден \n'
     'Ожидаемый статус: {expected_status}'
 )
