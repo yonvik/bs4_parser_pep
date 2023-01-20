@@ -96,9 +96,9 @@ python main.py download
 Пример:
 ```bash
 python main.py pep -o file
-
+```
 Содержимое файла **pep_2023-01-20_22-38-36.csv**:
-
+```
 |Статус     | Количество |
 |-----------|------------|
 |Active     | 37         |
