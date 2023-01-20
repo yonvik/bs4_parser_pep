@@ -86,10 +86,9 @@ python main.py -o pretty latest-versions
 Команда ```download``` переходит на страницу ```https://docs.python.org/3/download.html``` и скачивает PDF-файл документации zip-архивом. Архив сохраняется в директорию */downloads*.
 
 Пример:
-
+```
 python main.py download
 ```
-
 ---
 Сброр статусов документов ```pep``` на странице ```https://peps.python.org/```, и подсчёт всех **PEP** статусов документов с опцией вывода результата в csv-файл:
 
