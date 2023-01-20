@@ -62,7 +62,7 @@ python main.py -o pretty whats-new
 
 Команда ```latest-versions``` переходит на страницу ```https://docs.python.org/3/``` и выводит результат о **Python**: ссылку на документацию, версия и статус.
 
-```
+
 Пример:
 ```bash
 python main.py -o pretty latest-versions
@@ -84,8 +84,9 @@ python main.py -o pretty latest-versions
 ```
 ---
 Команда ```download``` переходит на страницу ```https://docs.python.org/3/download.html``` и скачивает PDF-файл документации zip-архивом. Архив сохраняется в директорию */downloads*.
+
 Пример:
-```bash
+
 python main.py download
 ```
 
