@@ -92,7 +92,7 @@ python main.py download
 ---
 Сброр статусов документов ```pep``` на странице ```https://peps.python.org/```, и подсчёт всех **PEP** статусов документов с опцией вывода результата в csv-файл:
 
-```
+
 Пример:
 ```bash
 python main.py pep -o file
