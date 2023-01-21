@@ -33,8 +33,12 @@ def whats_new(session):
     logs = []
     results = [('Ссылка на статью', 'Заголовок', 'Редактор, Автор')]
     for section in tqdm(
-        get_soup(session, WHATS_NEW_URL).select(
-            '#what-s-new-in-python div.toctree-wrapper li.toctree-l1')):
+        get_soup(
+            session, WHATS_NEW_URL
+            ).select(
+            '#what-s-new-in-python div.toctree-wrapper li.toctree-l1'
+            )
+    ):
         version_link = urljoin(WHATS_NEW_URL, section.select('a')[0]['href'])
         try:
             soup = get_soup(session, version_link)
@@ -53,10 +57,11 @@ def whats_new(session):
 
 
 def latest_versions(session):
-    ul_tags = get_soup(session, MAIN_DOC_URL).select(
-        'div.sphinxsidebarwrapper ul'
-    )
-    for ul in (ul_tags):
+    for ul in get_soup(
+        session, MAIN_DOC_URL
+        ).select(
+            'div.sphinxsidebarwrapper ul'
+    ):
         if 'All versions' in ul.text:
             a_tags = ul.find_all('a')
             break
@@ -78,9 +83,14 @@ def latest_versions(session):
 
 
 def download(session):
-    soup = get_soup(session, DOWNLOAD_URL)
-    pdf_a4_tag = soup.select_one('table.docutils td > a[href$="pdf-a4.zip"]')
-    archive_url = urljoin(DOWNLOAD_URL, pdf_a4_tag['href'])
+    archive_url = urljoin(
+        DOWNLOAD_URL,
+        get_soup(
+            session, DOWNLOAD_URL
+            ).select_one(
+                'table.docutils td > a[href$="pdf-a4.zip"]'
+            )['href']
+    )
     filename = archive_url.split('/')[-1]
     downloads_dir = BASE_DIR / DOWNLOADS_DIR
     downloads_dir.mkdir(exist_ok=True)
@@ -95,7 +105,10 @@ def pep(session):
     results_count = defaultdict(int)
     logs = []
     for tr_tag in tqdm(
-        get_soup(session, MAIN_PEP_URL).select('#numerical-index tbody tr')
+        get_soup(
+            session, MAIN_PEP_URL
+            ).select(
+                '#numerical-index tbody tr')
     ):
         try:
             status_pep = find_tag(tr_tag, 'td').text[1:]
@@ -116,7 +129,7 @@ def pep(session):
                 )
             results_count[status] += 1
         except ConnectionError:
-            logs.append(CONNECTION_ERROR_MESSAGE.format(link=pep_link))
+            logs.append(CONNECTION_ERROR_MESSAGE.format(url=pep_link))
     for log in logs:
         logging.info(log)
     return [

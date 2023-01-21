@@ -14,7 +14,7 @@ DOWNLOADS_DIR = 'downloads'
 DOWNLOAD_URL = urljoin(MAIN_DOC_URL, 'download.html')
 WHATS_NEW_URL = urljoin(MAIN_DOC_URL, 'whatsnew/')
 
-CONNECTION_ERROR_MESSAGE = 'Ошибка соединения с {link}'
+CONNECTION_ERROR_MESSAGE = 'Ошибка соединения с {url}'
 DOWNLOAD_COMPLITE = 'Архив был загружен и сохранён: {archive_path}'
 VERSION_ERROR_MESSAGE = 'Данная версия Python не найдена'
 UNEXPECTED_PEP_STATUS = (

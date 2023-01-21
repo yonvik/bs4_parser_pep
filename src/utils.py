@@ -1,4 +1,3 @@
-import logging
 from requests import RequestException
 
 from bs4 import BeautifulSoup
@@ -13,10 +12,7 @@ def get_response(session, url):
         response.encoding = 'utf-8'
         return response
     except RequestException:
-        raise ConnectionError(logging.exception(
-            ERROR_LOADING_PAGE.format(url=url),
-            stack_info=True
-        ))
+        raise ConnectionError(ERROR_LOADING_PAGE.format(url=url))
 
 
 def find_tag(soup, tag, attrs=None):
@@ -28,5 +24,5 @@ def find_tag(soup, tag, attrs=None):
     return search_tag
 
 
-def get_soup(session, *args):
-    return BeautifulSoup(get_response(session, *args).text, features='lxml')
+def get_soup(session, url, parser='lxml'):
+    return BeautifulSoup(get_response(session, url).text, parser)
