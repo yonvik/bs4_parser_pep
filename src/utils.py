@@ -1,6 +1,8 @@
 import logging
 from requests import RequestException
 
+from bs4 import BeautifulSoup
+
 from constants import ERROR_LOADING_PAGE, TAG_NOT_FOUND
 from exceptions import ParserFindTagException
 
@@ -24,3 +26,7 @@ def find_tag(soup, tag, attrs=None):
             TAG_NOT_FOUND.format(tag=tag, attrs=attrs)
         )
     return search_tag
+
+
+def get_soup(session, *args):
+    return BeautifulSoup(get_response(session, *args).text, features='lxml')

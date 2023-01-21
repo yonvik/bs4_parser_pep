@@ -1,4 +1,5 @@
 from pathlib import Path
+from urllib.parse import urljoin
 
 MAIN_DOC_URL = 'https://docs.python.org/3/'
 MAIN_PEP_URL = 'https://peps.python.org/'
@@ -6,11 +7,12 @@ MAIN_PEP_URL = 'https://peps.python.org/'
 BASE_DIR = Path(__file__).parent
 PRETTY = 'pretty'
 FILE = 'file'
-CHOICES = (PRETTY, FILE)
 RESULTS_DIR = 'results'
 LOG_DIR = BASE_DIR / 'Logs'
 LOG_FILE = LOG_DIR / 'parser.log'
 DOWNLOADS_DIR = 'downloads'
+DOWNLOAD_URL = urljoin(MAIN_DOC_URL, 'download.html')
+WHATS_NEW_URL = urljoin(MAIN_DOC_URL, 'whatsnew/')
 
 CONNECTION_ERROR_MESSAGE = 'Ошибка соединения с {link}'
 DOWNLOAD_COMPLITE = 'Архив был загружен и сохранён: {archive_path}'
@@ -29,6 +31,7 @@ ERROR_LOADING_PAGE = 'Возникла ошибка при загрузки ст
 TAG_NOT_FOUND = 'Не найден тег {tag} {attrs}'
 
 DATETIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
+PATTERN = r'Python (?P<version>\d\.\d+) \((?P<status>.*)\)'
 
 EXPECTED_STATUS = {
     'A': ('Active', 'Accepted'),
